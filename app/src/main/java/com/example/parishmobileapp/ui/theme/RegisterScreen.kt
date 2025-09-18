@@ -9,7 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun RegisterScreen() {
+fun RegisterScreen(onNavigateToLogin: () -> Unit) {
     var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -43,7 +43,10 @@ fun RegisterScreen() {
         }, modifier = Modifier.fillMaxWidth()) {
             Text("Register")
         }
-        TextButton(onClick = {onNavigateToLogin}) {
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        TextButton(onClick = { onNavigateToLogin() }) {
             Text("Already have an account? Click here")
         }
     }
@@ -52,5 +55,5 @@ fun RegisterScreen() {
 @Preview(showBackground = true)
 @Composable
 fun RegisterPreview() {
-    RegisterScreen()
+    RegisterScreen(onNavigateToLogin = {})
 }

@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.parishmobileapp.ui.LoginScreen
+import com.example.parishmobileapp.ui.theme.LoginScreen
 import com.example.parishmobileapp.ui.theme.RegisterScreen
 import com.parishapp.mobile.data.ApiClient
 import com.parishapp.mobile.data.UserApi
