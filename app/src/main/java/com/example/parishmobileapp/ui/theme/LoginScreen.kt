@@ -105,6 +105,8 @@ fun LoginScreen(onNavigateToRegister: () -> Unit) {
             )
         }
 
+//        place an exit button here.
+
     }
 }
 
