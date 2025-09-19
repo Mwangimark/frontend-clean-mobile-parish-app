@@ -1,6 +1,7 @@
 package com.example.parishmobileapp.ui.theme
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -12,6 +13,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.parishmobileapp.R
@@ -86,29 +88,35 @@ fun LoginScreen(onNavigateToRegister: () -> Unit) {
             }
 
         }
+
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-                text = "Forgot Password?",
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.primary
-            )
+            text = "Forgot Password?",
+            style = MaterialTheme.typography.bodyMedium.copy(
+                textDecoration = TextDecoration.Underline
+            ),
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.clickable {
+            //forgot password here
+              }
+        )
 
+        Spacer(modifier = Modifier.height(16.dp))
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Text(
+            text = "Don’t have an account? Register here",
+            style = MaterialTheme.typography.bodyMedium.copy(
+                textDecoration = TextDecoration.Underline
+            ),
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.clickable { onNavigateToRegister() }
+        )
 
-        TextButton(onClick = onNavigateToRegister) {
-            Text(
-                text = "Don’t have an account? Register here",
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.primary
-            )
-        }
+        Spacer(modifier = Modifier.height(16.dp))
 
         OutlinedButton(
             onClick = { println("✅ Exit the app") },
-            modifier = Modifier
-                .padding(16.dp)
         ) {
             Text("Exit")
         }
