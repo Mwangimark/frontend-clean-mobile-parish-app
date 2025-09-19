@@ -32,10 +32,17 @@ class MainActivity : ComponentActivity() {
                         startDestination = "register"
                     ) {
                         composable("register") {
-                            RegisterScreen(onNavigateToLogin = {
-                                navController.navigate("login")
-                            })
+                            RegisterScreen(
+                                onNavigateToLogin = {
+                                    navController.navigate("login")
+                                },
+                                onGoogleSignIn = {
+                                    // TODO: handle Google sign in (for now just log)
+                                    Log.d("RegisterScreen", "Google Sign In clicked")
+                                }
+                            )
                         }
+
                         composable("login") {
                             LoginScreen(onNavigateToRegister = {
                                 navController.navigate("register")
