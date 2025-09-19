@@ -105,7 +105,14 @@ fun LoginScreen(onNavigateToRegister: () -> Unit) {
             )
         }
 
-//        place an exit button here.
+        OutlinedButton(
+            onClick = { println("✅ Exit the app") },
+            modifier = Modifier
+                .padding(16.dp)
+        ) {
+            Text("Exit")
+        }
+
 
     }
 }
