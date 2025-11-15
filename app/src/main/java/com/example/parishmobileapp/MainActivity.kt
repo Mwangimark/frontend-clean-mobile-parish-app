@@ -10,8 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.parishmobileapp.ui.theme.LoginScreen
-import com.example.parishmobileapp.ui.theme.RegisterScreen
+import com.example.parishmobileapp.ui.auth.LoginScreen
+import com.example.parishmobileapp.ui.auth.RegisterScreen
+import com.example.parishmobileapp.ui.home.DashboardScreen
 import com.parishapp.mobile.data.ApiClient
 import com.parishapp.mobile.data.UserApi
 import kotlinx.coroutines.launch
@@ -29,7 +30,7 @@ class MainActivity : ComponentActivity() {
                 Surface {
                     NavHost(
                         navController = navController,
-                        startDestination = "register"
+                        startDestination = "login"
                     ) {
                         composable("register") {
                             RegisterScreen(
@@ -44,10 +45,17 @@ class MainActivity : ComponentActivity() {
                         }
 
                         composable("login") {
-                            LoginScreen(onNavigateToRegister = {
-                                navController.navigate("register")
-                            })
+                            LoginScreen(
+                                onNavigateToRegister = { navController.navigate("register") },
+                                onNavigateToDashboard = { navController.navigate("dashboard") }
+                            )
                         }
+
+                        composable("dashboard") {
+                            DashboardScreen()
+                        }
+
+
                     }
                 }
             }

@@ -1,4 +1,4 @@
-package com.example.parishmobileapp.ui.theme
+package com.example.parishmobileapp.ui.auth
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -17,7 +17,8 @@ import androidx.compose.ui.unit.dp
 import com.example.parishmobileapp.R
 
 @Composable
-fun LoginScreen(onNavigateToRegister: () -> Unit) {
+fun LoginScreen(onNavigateToRegister: () -> Unit,
+                onNavigateToDashboard:() -> Unit) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -36,26 +37,28 @@ fun LoginScreen(onNavigateToRegister: () -> Unit) {
         )
 
         Spacer(modifier = Modifier.height(12.dp))
-        Text("Welcome Back",
+        Text(
+            "Welcome Back",
             style = MaterialTheme.typography.headlineLarge.copy(
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center
-            ))
+            )
+        )
         Spacer(modifier = Modifier.height(12.dp))
 
         Card(
             modifier = Modifier
-                 .padding(horizontal = 16.dp)
-                 .fillMaxWidth(),
+                .padding(horizontal = 16.dp)
+                .fillMaxWidth(),
             shape = RoundedCornerShape(16.dp),
             elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
-        ){
+        ) {
             Column(
                 modifier = Modifier
                     .padding(20.dp)
                     .fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
-            ){
+            ) {
                 Text("Login", style = MaterialTheme.typography.headlineMedium)
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -89,10 +92,10 @@ fun LoginScreen(onNavigateToRegister: () -> Unit) {
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-                text = "Forgot Password?",
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.primary
-            )
+            text = "Forgot Password?",
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.primary
+        )
 
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -106,13 +109,13 @@ fun LoginScreen(onNavigateToRegister: () -> Unit) {
         }
 
         OutlinedButton(
-            onClick = { println("✅ Exit the app") },
+            onClick = onNavigateToDashboard,
             modifier = Modifier
                 .padding(16.dp)
+                .fillMaxWidth()
         ) {
-            Text("Exit")
+            Text("Dashboard")
         }
-
 
     }
 }
@@ -120,5 +123,7 @@ fun LoginScreen(onNavigateToRegister: () -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun LoginPreview() {
-    LoginScreen(onNavigateToRegister = {})
+    LoginScreen(onNavigateToRegister = {},
+        onNavigateToDashboard = {}
+    )
 }
